@@ -13,6 +13,7 @@ Clone the repository to your local machine.
 ### Input File Formats
 
 The tool expects one CSV (Comma-Separated Values) file as input:
+
 **Health Metrics Data**: A table containing patient height, weight, waist circumference, and blood pressure readings.
 
 Example file structure:
