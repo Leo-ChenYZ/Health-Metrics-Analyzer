@@ -1,46 +1,79 @@
 # Health Metrics Analyzer
 
-A Python library for analyzing basic health measurements and providing insights about a person's health status based on standard medical guidelines.
+This repository provides a tool for processing basic health metrics data. It includes functions to parse patient health measurements, calculate Body Mass Index (BMI) and categorize it, determine blood pressure categories, and analyze waist-to-height ratios.
 
 Group member: Leo
 
-## Overview
+## For End Users
 
-The Health Metrics Analyzer is a command-line tool that processes CSV files containing health metrics data and generates reports on key health indicators. The library focuses on three core health domains:
+### Setup/Installation
 
-1. Body Mass Index (BMI) calculation and categorization
-2. Blood pressure analysis and categorization
-3. Vital signs assessment (heart rate, respiratory rate, temperature)
+Clone the repository to your local machine.
 
-## Features
+### Input File Formats
 
-- Calculate and interpret BMI values based on height and weight
-- Analyze systolic and diastolic blood pressure readings
-- Evaluate vital signs against standard healthy ranges
-- Process individual or batch health data from CSV files
-- Generate simple summary reports for individuals
-- Command-line interface for easy interaction
+The tool expects one CSV (Comma-Separated Values) file as input:
+1. **Health Metrics Data**: A table containing patient height, weight, waist circumference, and blood pressure readings.
 
-## Architecture
+Example file structure:
 
-The project follows a modular design with the following components:
+**Health Metrics Data Example**
 
-```
-health_metrics_analyzer/
-├── __init__.py
-├── cli.py                  # Command-line interface
-├── analyzer/
-│   ├── __init__.py
-│   ├── bmi_analyzer.py     # BMI calculation and classification
-│   ├── bp_analyzer.py      # Blood pressure analysis
-│   └── vitals_analyzer.py  # Vital signs assessment
-├── data/
-│   ├── __init__.py
-│   └── data_loader.py      # CSV data loading and preprocessing
-├── reporting/
-│   ├── __init__.py
-│   └── report_generator.py # Health summary report generation
-└── utils/
-    ├── __init__.py
-    └── constants.py        # Medical reference values and thresholds
+| PatientID | Height_cm | Weight_kg | Waist_cm | Systolic_BP | Diastolic_BP |
+|-----------|-----------|-----------|----------|-------------|--------------|
+| 1001      | 170       | 65        | 75       | 118         | 76           |
+| 1002      | 160       | 80        | 90       | 140         | 90           |
+| 1003      | 180       | 75        | 85       | 125         | 82           |
+
+### Examples
+
+How to use the provided functions:
+
+1. **Parsing data**:
+   ```python
+   db = parse_health_data("HealthMetricsTable.csv")
+   ```
+
+2. **Calculating BMI and its category**:
+   ```python
+   metric = db.get_metric("1001")  # 1001 is the patient's id
+   metric.bmi()  # e.g., 22.5
+   metric.bmi_category()  # e.g., "Normal weight"
+   ```
+
+3. **Analyzing blood pressure**:
+   ```python
+   metric.blood_pressure_category()  # e.g., "Normal"
+   ```
+
+4. **Calculating waist-to-height ratio and category**:
+   ```python
+   metric.waist_to_height_ratio()  # e.g., 0.44
+   metric.waist_to_height_category()  # e.g., "Low Risk"
+   ```
+
+## For Contributors
+
+### Local Testing Instructions
+
+1. Install `pytest` and other necessary dependencies if not already installed:
+   ```bash
+   pip install -r requirements-test.txt
+   ```
+
+2. Run the tests:
+   ```bash
+   pytest tests/test_health_metrics_utils.py
+   ```
+
+### Contributing
+
+1. Fork the repository and create a new branch for your feature or bugfix.
+2. Write tests for your changes in `tests/test_health_metrics_utils.py`.
+3. Ensure all tests pass by running `pytest`.
+4. Submit a pull request with a detailed description of your changes.
+
+## License
+
+This project is licensed under the MIT License.
 ```
