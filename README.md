@@ -2,7 +2,7 @@
 
 This repository provides a tool for processing basic health metrics data. It includes functions to parse patient health measurements, calculate Body Mass Index (BMI) and categorize it, determine blood pressure categories, and analyze waist-to-height ratios.
 
-Group member: Leo
+*Group member: Leo*
 
 ## For End Users
 
@@ -13,11 +13,9 @@ Clone the repository to your local machine.
 ### Input File Formats
 
 The tool expects one CSV (Comma-Separated Values) file as input:
-1. **Health Metrics Data**: A table containing patient height, weight, waist circumference, and blood pressure readings.
+**Health Metrics Data**: A table containing patient height, weight, waist circumference, and blood pressure readings.
 
 Example file structure:
-
-**Health Metrics Data Example**
 
 | PatientID | Height_cm | Weight_kg | Waist_cm | Systolic_BP | Diastolic_BP |
 |-----------|-----------|-----------|----------|-------------|--------------|
@@ -76,4 +74,3 @@ How to use the provided functions:
 ## License
 
 This project is licensed under the MIT License.
-```
